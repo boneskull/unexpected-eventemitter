@@ -1,0 +1,9 @@
+{
+  "generator-bonestorm": {
+    "promptValues": {
+      "authorName": "Christopher Hiller",
+      "authorEmail": "boneskull@boneskull.com",
+      "authorUrl": "https://boneskull.com"
+    }
+  }
+}
