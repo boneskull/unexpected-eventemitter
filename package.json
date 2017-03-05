@@ -1,6 +1,6 @@
 {
   "name": "unexpected-eventemitter",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "EventEmitter assertions for Unexpected",
   "homepage": "https://github.com/boneskull/unexpected-eventemitter",
   "author": {
