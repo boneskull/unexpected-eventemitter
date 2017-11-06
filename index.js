@@ -1,7 +1,8 @@
-import 'source-map-support/register';
-import pkg from '../package.json';
+'use strict';
 
-export default {
+const pkg = require('./package.json');
+
+module.exports = {
   name: pkg.name,
   version: pkg.version,
   installInto (expect) {

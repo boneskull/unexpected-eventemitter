@@ -2,11 +2,9 @@
 
 > EventEmitter assertions for [Unexpected](http://unexpected.js.org/)
 
-## Warning
-
-**This module doesn't yet run in the browser**.
-
 ## Installation
+
+**Requires Node.js v6 or newer**
 
 ```bash
 $ npm i unexpected unexpected-eventemitter -D
@@ -15,9 +13,9 @@ $ npm i unexpected unexpected-eventemitter -D
 ## Example
 
 ```js
-import unexpected from 'unexpected';
-import uee from 'unexpected-eventemitter';
-import {EventEmitter} from 'events';
+const unexpected = require('unexpected');
+const uee = require('unexpected-eventemitter');
+const {EventEmitter} = require('events');
 
 const expect = unexpected.clone()
   .use(uee);

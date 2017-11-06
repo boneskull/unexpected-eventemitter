@@ -1,9 +1,10 @@
 /* eslint-env mocha */
+'use strict';
 
-import unexpected from 'unexpected';
-import sinon from 'sinon';
-import unexpectedEventEmitter from '../src';
-import {EventEmitter} from 'events';
+const unexpected = require('unexpected');
+const sinon = require('sinon');
+const unexpectedEventEmitter = require('..');
+const {EventEmitter} = require('events');
 
 describe('unexpected-eventemitter', function () {
   let expect;

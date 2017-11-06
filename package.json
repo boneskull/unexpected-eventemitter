@@ -1,6 +1,6 @@
 {
   "name": "unexpected-eventemitter",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "EventEmitter assertions for Unexpected",
   "homepage": "https://github.com/boneskull/unexpected-eventemitter",
   "author": {
@@ -8,10 +8,9 @@
     "email": "boneskull@boneskull.com",
     "url": "https://boneskull.com"
   },
-  "main": "dist/index.js",
+  "main": "index.js",
   "files": [
-    "dist",
-    "src"
+    "index.js"
   ],
   "keywords": [
     "unexpected",
@@ -26,12 +25,6 @@
     "bdd"
   ],
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-bluebird": "^1.0.1",
-    "babel-preset-env": "^1.2.0",
-    "babel-register": "^6.23.0",
     "eslint": "^4.10.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
@@ -42,21 +35,22 @@
     "mocha": "^4.0.1",
     "sinon": "^4.1.1",
     "source-map-support": "^0.5.0",
-    "unexpected": "^10.26.3"
+    "unexpected": "^10.26.3",
+    "semantic-release": "^8.2.0"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
+  },
+  "peerDependencies": {
+    "unexpected": "^10.0.0"
   },
   "license": "Apache-2.0",
   "scripts": {
-    "pretest": "eslint '*.js' src test --fix",
-    "test": "mocha --require babel-register --require source-map-support",
-    "build": "babel --source-maps --out-dir dist src",
-    "build:watch": "babel --source-maps --watch --out-dir dist src"
+    "pretest": "eslint '*.js' src test",
+    "test": "mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
-  "dependencies": {
-    "babel-runtime": "^6.23.0"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/boneskull/unexpected-eventemitter.git"
