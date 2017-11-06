@@ -32,13 +32,16 @@
     "babel-preset-bluebird": "^1.0.1",
     "babel-preset-env": "^1.2.0",
     "babel-register": "^6.23.0",
-    "eslint": "^3.17.0",
-    "eslint-config-semistandard": "^7.0.0",
-    "eslint-config-standard": "^7.0.0",
+    "eslint": "^4.10.0",
+    "eslint-config-semistandard": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.1.1",
-    "mocha": "^3.2.0",
-    "sinon": "^1.17.7",
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1",
+    "sinon": "^4.1.1",
+    "source-map-support": "^0.5.0",
     "unexpected": "^10.26.3"
   },
   "engines": {
@@ -52,8 +55,7 @@
     "build:watch": "babel --source-maps --watch --out-dir dist src"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "source-map-support": "^0.4.11"
+    "babel-runtime": "^6.23.0"
   },
   "repository": {
     "type": "git",
