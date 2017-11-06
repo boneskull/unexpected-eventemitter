@@ -54,5 +54,9 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "source-map-support": "^0.4.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boneskull/unexpected-eventemitter.git"
   }
 }
