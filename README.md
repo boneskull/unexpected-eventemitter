@@ -8,16 +8,8 @@
 
 ## Installation
 
-### npm
-
-```shell
-$ npm install unexpected unexpected-eventemitter --save-dev
-```
-
-### Yarn
-
-```shell
-$ yarn add unexpected unexpected-eventemitter --save-dev
+```bash
+$ npm i unexpected unexpected-eventemitter -D
 ```
 
 ## Example
