@@ -1,8 +1,12 @@
 extends:
   - semistandard
+  - prettier
 parserOptions:
   sourceType: script
 rules:
   strict:
     - error
     - safe
+  prettier/prettier: error
+plugins:
+  - prettier

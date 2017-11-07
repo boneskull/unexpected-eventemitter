@@ -5,16 +5,20 @@ const pkg = require('./package.json');
 module.exports = {
   name: pkg.name,
   version: pkg.version,
-  installInto (expect) {
+  installInto(expect) {
     expect.addType({
       base: 'any',
       name: 'EventEmitter',
-      identify (obj) {
-        return obj !== null && typeof obj === 'object' &&
-          typeof obj.emit === 'function' && typeof obj.once === 'function' &&
-          typeof obj.on === 'function';
+      identify(obj) {
+        return (
+          obj !== null &&
+          typeof obj === 'object' &&
+          typeof obj.emit === 'function' &&
+          typeof obj.once === 'function' &&
+          typeof obj.on === 'function'
+        );
       },
-      inspect (subject, depth, output) {
+      inspect(subject, depth, output) {
         output.text('EventEmitter');
       }
     });
@@ -25,7 +29,7 @@ module.exports = {
         let emitted = false;
         let emittedValues;
 
-        function onEvent (...values) {
+        function onEvent(...values) {
           emitted = true;
           emittedValues = values;
         }
@@ -42,6 +46,7 @@ module.exports = {
         } finally {
           eventEmitter.removeListener(eventName, onEvent);
         }
-      });
+      }
+    );
   }
 };

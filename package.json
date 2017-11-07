@@ -26,16 +26,21 @@
   ],
   "devDependencies": {
     "eslint": "^4.10.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-config-semistandard": "^11.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.3.0",
     "mocha": "^4.0.1",
+    "prettier-eslint-cli": "^4.4.0",
+    "semantic-release": "^8.2.3",
     "sinon": "^4.1.1",
-    "unexpected": "^10.26.3",
-    "semantic-release": "^8.2.0"
+    "unexpected": "^10.26.3"
   },
   "engines": {
     "node": ">=6"
@@ -45,7 +50,10 @@
   },
   "license": "Apache-2.0",
   "scripts": {
-    "pretest": "eslint '*.js' src test",
+    "format": "prettier-eslint --write \"*.js\" \"test/**/*.js\"",
+    "precommit": "lint-staged",
+    "lint": "eslint \"*.js\" test",
+    "pretest": "npm run lint",
     "test": "mocha",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -53,5 +61,23 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/boneskull/unexpected-eventemitter.git"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": false
+  },
+  "semistandard": {
+    "parserOptions": {
+      "sourceType": "script"
+    },
+    "plugins": [
+      "prettier"
+    ]
   }
 }
