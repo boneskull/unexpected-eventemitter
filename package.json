@@ -71,13 +71,5 @@
   "prettier": {
     "singleQuote": true,
     "bracketSpacing": false
-  },
-  "semistandard": {
-    "parserOptions": {
-      "sourceType": "script"
-    },
-    "plugins": [
-      "prettier"
-    ]
   }
 }
