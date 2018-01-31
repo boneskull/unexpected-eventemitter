@@ -7,7 +7,7 @@ module.exports = {
   version: pkg.version,
   installInto(expect) {
     expect.addType({
-      base: 'any',
+      base: 'object',
       name: 'EventEmitter',
       identify(obj) {
         return (
@@ -17,9 +17,6 @@ module.exports = {
           typeof obj.once === 'function' &&
           typeof obj.on === 'function'
         );
-      },
-      inspect(subject, depth, output) {
-        output.text('EventEmitter');
       }
     });
 
