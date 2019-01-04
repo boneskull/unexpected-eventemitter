@@ -40,8 +40,8 @@
     "prettier-eslint-cli": "^4.7.0",
     "semantic-release": "^12.4.1",
     "sinon": "^4.2.2",
-    "unexpected": "^10.36.3",
-    "travis-deploy-once": "^4.3.3"
+    "travis-deploy-once": "^4.3.3",
+    "unexpected": "^11.0.0-4"
   },
   "engines": {
     "node": ">=6"
