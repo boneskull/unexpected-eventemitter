@@ -120,7 +120,7 @@ describe('unexpected-eventemitter', function() {
                   'to emit from',
                   ee,
                   eventName,
-                  () => value
+                  expect.it(() => value)
                 ),
               'not to throw'
             );
