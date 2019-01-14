@@ -11,7 +11,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "dist"
+    "dist/index.js"
   ],
   "browser": "dist/index.js",
   "keywords": [
