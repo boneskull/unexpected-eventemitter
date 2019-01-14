@@ -1,6 +1,6 @@
 extends:
   - semistandard
-  - prettier
+  - plugin:prettier/recommended
 parserOptions:
   sourceType: script
 rules:

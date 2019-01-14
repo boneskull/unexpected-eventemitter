@@ -15,7 +15,7 @@ describe('unexpected-eventemitter', function() {
   beforeEach(function() {
     expect = unexpected.clone().use(unexpectedEventEmitter);
     ee = new EventEmitter();
-    sbx = sinon.sandbox.create();
+    sbx = sinon.createSandbox();
     eventName = 'foo';
   });
 

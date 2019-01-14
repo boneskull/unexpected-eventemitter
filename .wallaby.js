@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function wallabyConfig(wallaby) {
+module.exports = () => {
   return {
     files: ['package.json', 'index.js'],
     tests: ['test/**/*.spec.js'],

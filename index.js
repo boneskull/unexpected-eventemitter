@@ -1,37 +1,34 @@
 'use strict';
 
-const pkg = require('./package.json');
+const {name, version} = require('./package.json');
 
 module.exports = {
-  name: pkg.name,
-  version: pkg.version,
+  name,
+  version,
   installInto(expect) {
     expect.addType({
       base: 'object',
       name: 'EventEmitter',
-      identify(obj) {
-        return (
-          obj !== null &&
-          typeof obj === 'object' &&
-          typeof obj.emit === 'function' &&
-          typeof obj.once === 'function' &&
-          typeof obj.on === 'function'
-        );
-      }
+      identify: obj =>
+        obj !== null &&
+        typeof obj === 'object' &&
+        typeof obj.emit === 'function' &&
+        typeof obj.once === 'function' &&
+        typeof obj.on === 'function'
     });
 
     expect.addAssertion(
       '<function> [not] to emit from <EventEmitter> <string> <any*>',
-      (expect, subject, eventEmitter, eventName, ...values) => {
+      (expect, subject, ee, eventName, ...values) => {
         let emitted = false;
         let emittedValues;
 
-        function onEvent(...values) {
+        const onEvent = (...values) => {
           emitted = true;
           emittedValues = values;
-        }
+        };
 
-        eventEmitter.once(eventName, onEvent);
+        ee.once(eventName, onEvent);
 
         try {
           expect(subject, 'not to throw');
@@ -41,7 +38,7 @@ module.exports = {
             expect(emittedValues[idx], '[not] to satisfy', value);
           });
         } finally {
-          eventEmitter.removeListener(eventName, onEvent);
+          ee.removeListener(eventName, onEvent);
         }
       }
     );
