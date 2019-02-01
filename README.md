@@ -9,8 +9,8 @@ $ npm i unexpected unexpected-eventemitter --save-dev
 ```
 
 - This module requires Node.js v6+, IE11, or a modern browser.
-- A bundler is necessary when using this module in a browser.
 - [unexpected](http://unexpected.js.org) is a _peer dependency_ of this module.
+- In a browser, this module is exposed as `global.unexpectedEventEmitter`.
 
 ## Example
 
