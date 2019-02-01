@@ -9,7 +9,9 @@
     "url": "https://boneskull.com"
   },
   "files": [
-    "dist/*.{js,map}"
+    "dist/*.js",
+    "src",
+    "index.js"
   ],
   "keywords": [
     "unexpected",
