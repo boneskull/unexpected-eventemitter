@@ -26,9 +26,8 @@
     "bdd"
   ],
   "devDependencies": {
-    "@boneskull/bubleify": "^1.2.1",
     "browserify": "^16.2.3",
-    "bubleify": "github:boneskull/bubleify#ba5d795",
+    "bubleify": "^1.2.1",
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.4.0",
     "eslint-config-semistandard": "^13.0.0",
@@ -59,7 +58,7 @@
     "pretest": "npm run lint",
     "test": "mocha",
     "semantic-release": "semantic-release",
-    "prepublishOnly": "browserify -e src/unexpected-eventemitter.js -t [ @boneskull/bubleify --target [ --ie 11 ] ] -t package-json-versionify -s unexpectedEventEmitter -d -o dist/unexpected-eventemitter.js"
+    "prepublishOnly": "browserify -e src/unexpected-eventemitter.js -t [ bubleify --target [ --ie 11 ] ] -t package-json-versionify -s unexpectedEventEmitter -d -o dist/unexpected-eventemitter.js"
   },
   "dependencies": {},
   "repository": {
