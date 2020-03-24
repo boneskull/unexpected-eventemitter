@@ -2,16 +2,17 @@ language: node_js
 node_js:
   - '13'
   - '12'
+  - '11'
   - '10'
   - '8'
 install: npm ci
+script: npm run mocha
 jobs:
   include:
     - stage: lint
       node_js: 13
       script: npm run lint
     - stage: test
-      script: npm run mocha
 notifications:
   email: false
 before_install: |
