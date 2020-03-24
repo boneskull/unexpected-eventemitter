@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - '13'
   - '12'
-  - '11'
   - '10'
   - '8'
 install: npm ci
@@ -13,6 +12,9 @@ jobs:
       node_js: 13
       script: npm run lint
     - stage: test
+stages:
+  - lint
+  - test
 notifications:
   email: false
 before_install: |
