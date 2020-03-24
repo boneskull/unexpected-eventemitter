@@ -2,7 +2,7 @@
 
 module.exports = () => {
   return {
-    files: ['package.json', 'index.js'],
+    files: ['package.json', 'index.js', 'src/**/*.js'],
     tests: ['test/**/*.spec.js'],
     env: {
       type: 'node',
