@@ -30,7 +30,7 @@ describe('unexpected-eventemitter', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName),
           'to throw',
-          new RegExp(`to emit from EventEmitter.+, '${eventName}'`)
+          new RegExp(`to emit from(?:[^]|.)EventEmitter(?:[^]|.)+${eventName}`)
         );
       });
     });
@@ -71,7 +71,9 @@ describe('unexpected-eventemitter', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName, value),
           'to throw',
-          new RegExp(`to emit from EventEmitter.+, '${eventName}', '${value}'`)
+          new RegExp(
+            `to emit from(?:[^]|.)EventEmitter(?:[^]|.)+?${eventName}(?:[^]|.)+${value}`
+          )
         );
       });
     });
@@ -90,7 +92,7 @@ describe('unexpected-eventemitter', function () {
               ),
             'to throw',
             new RegExp(
-              `to emit from EventEmitter.+, '${eventName}', '${value}'`
+              `to emit from(?:[^]|.)EventEmitter(?:[^]|.)+?${eventName}(?:[^]|.)+${value}`
             )
           );
         });
@@ -145,7 +147,7 @@ describe('unexpected-eventemitter', function () {
               ),
             'to throw',
             new RegExp(
-              `to emit from EventEmitter.+, '${eventName}', '${values[0]}', '${values[1]}'`
+              `to emit from(?:[^]|.)EventEmitter(?:[^]|.)+?${eventName}(?:[^]|.)+?${values[0]}(?:[^]|.)+${values[1]}`
             )
           );
         });
@@ -189,7 +191,7 @@ describe('unexpected-eventemitter', function () {
         expect(
           () => expect(() => ee.emit('foo'), 'not to emit from', ee, 'foo'),
           'to throw',
-          /not to emit from EventEmitter.+, 'foo'/
+          /not to emit from(?:[^]|.)EventEmitter(?:[^]|.)+foo/
         );
       });
     });
