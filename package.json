@@ -61,6 +61,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "mocha",
+    "mocha": "mocha",
     "release": "standard-version -a",
     "prepublishOnly": "browserify -e src/unexpected-eventemitter.js -t [ bubleify --target [ --ie 11 ] ] -t package-json-versionify -s unexpectedEventEmitter -d -o dist/unexpected-eventemitter.js"
   },
