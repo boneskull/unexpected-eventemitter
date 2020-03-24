@@ -9,12 +9,12 @@ module.exports = {
     expect.addType({
       base: 'object',
       name: 'EventEmitter',
-      identify: obj =>
+      identify: (obj) =>
         obj !== null &&
         typeof obj === 'object' &&
         typeof obj.emit === 'function' &&
         typeof obj.once === 'function' &&
-        typeof obj.on === 'function'
+        typeof obj.on === 'function',
     });
 
     expect.addAssertion(
@@ -42,5 +42,5 @@ module.exports = {
         }
       }
     );
-  }
+  },
 };

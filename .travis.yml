@@ -1,19 +1,16 @@
 language: node_js
 node_js:
-  - '11'
+  - '13'
+  - '12'
   - '10'
   - '8'
-  - '6'
 install: npm ci
 notifications:
   email: false
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
 before_install: |
   [[ ! -x ~/npm/node_modules/.bin/npm ]] && {
     # caching feature creates `~/npm` for us
-    cd ~/npm && npm install npm@^6
+    cd ~/npm && npm install npm
     cd -
   } || true
   # avoids bugs around https://github.com/travis-ci/travis-ci/issues/5092
@@ -24,14 +21,3 @@ cache:
     - ~/.npm # cache npm's cache
     - ~/npm # cache latest npm
 
-jobs:
-  include:
-    # Define the release stage that runs semantic-release
-    - stage: release
-      node_js: lts/*
-      script: skip
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script:
-          - npx semantic-release

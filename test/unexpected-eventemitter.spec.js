@@ -6,27 +6,27 @@ const sinon = require('sinon');
 const unexpectedEventEmitter = require('..');
 const {EventEmitter} = require('events');
 
-describe('unexpected-eventemitter', function() {
+describe('unexpected-eventemitter', function () {
   let expect;
   let sbx;
   let eventName;
   let ee;
 
-  beforeEach(function() {
+  beforeEach(function () {
     expect = unexpected.clone().use(unexpectedEventEmitter);
     ee = new EventEmitter();
     sbx = sinon.createSandbox();
     eventName = 'foo';
   });
 
-  afterEach(function() {
+  afterEach(function () {
     expect(ee.listenerCount(eventName), 'to be', 0);
     sbx.restore();
   });
 
-  describe('to emit from', function() {
-    describe('when EventEmitter does not emit an expected event', function() {
-      it('should throw', function() {
+  describe('to emit from', function () {
+    describe('when EventEmitter does not emit an expected event', function () {
+      it('should throw', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName),
           'to throw',
@@ -35,20 +35,20 @@ describe('unexpected-eventemitter', function() {
       });
     });
 
-    describe('when EventEmitter emits an expected event', function() {
-      it('should not throw', function() {
+    describe('when EventEmitter emits an expected event', function () {
+      it('should not throw', function () {
         expect(
           () => expect(() => ee.emit(eventName), 'to emit from', ee, eventName),
           'not to throw'
         );
       });
 
-      describe('and that event is "error"', function() {
-        beforeEach(function() {
+      describe('and that event is "error"', function () {
+        beforeEach(function () {
           eventName = 'error';
         });
 
-        it('should not throw', function() {
+        it('should not throw', function () {
           expect(
             () =>
               expect(() => ee.emit(eventName), 'to emit from', ee, eventName),
@@ -59,15 +59,15 @@ describe('unexpected-eventemitter', function() {
     });
   });
 
-  describe('to emit a value from', function() {
+  describe('to emit a value from', function () {
     let value;
 
-    beforeEach(function() {
+    beforeEach(function () {
       value = 'bar';
     });
 
-    describe('when EventEmitter does not emit an expected event', function() {
-      it('should throw', function() {
+    describe('when EventEmitter does not emit an expected event', function () {
+      it('should throw', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName, value),
           'to throw',
@@ -76,9 +76,9 @@ describe('unexpected-eventemitter', function() {
       });
     });
 
-    describe('when EventEmitter emits an expected event', function() {
-      describe('with an unexpected value', function() {
-        it('should throw', function() {
+    describe('when EventEmitter emits an expected event', function () {
+      describe('with an unexpected value', function () {
+        it('should throw', function () {
           expect(
             () =>
               expect(
@@ -96,8 +96,8 @@ describe('unexpected-eventemitter', function() {
         });
       });
 
-      describe('with an expected value', function() {
-        it('should not throw', function() {
+      describe('with an expected value', function () {
+        it('should not throw', function () {
           expect(
             () =>
               expect(
@@ -111,8 +111,8 @@ describe('unexpected-eventemitter', function() {
           );
         });
 
-        describe('satisfying a condition', function() {
-          it('should not throw', function() {
+        describe('satisfying a condition', function () {
+          it('should not throw', function () {
             expect(
               () =>
                 expect(
@@ -128,12 +128,12 @@ describe('unexpected-eventemitter', function() {
         });
       });
 
-      describe('with unexpected values', function() {
+      describe('with unexpected values', function () {
         let values;
-        beforeEach(function() {
+        beforeEach(function () {
           values = ['baz', 'quux'];
         });
-        it('should throw', function() {
+        it('should throw', function () {
           expect(
             () =>
               expect(
@@ -145,21 +145,19 @@ describe('unexpected-eventemitter', function() {
               ),
             'to throw',
             new RegExp(
-              `to emit from EventEmitter.+, '${eventName}', '${values[0]}', '${
-                values[1]
-              }'`
+              `to emit from EventEmitter.+, '${eventName}', '${values[0]}', '${values[1]}'`
             )
           );
         });
       });
 
-      describe('with more values than were expected', function() {
+      describe('with more values than were expected', function () {
         let values;
-        beforeEach(function() {
+        beforeEach(function () {
           values = ['baz', 'quux'];
         });
 
-        it('should not throw', function() {
+        it('should not throw', function () {
           expect(
             () =>
               expect(
@@ -176,9 +174,9 @@ describe('unexpected-eventemitter', function() {
     });
   });
 
-  describe('not to emit from', function() {
-    describe('when EventEmitter does not emit an expected event', function() {
-      it('should not throw', function() {
+  describe('not to emit from', function () {
+    describe('when EventEmitter does not emit an expected event', function () {
+      it('should not throw', function () {
         expect(
           () => expect(() => {}, 'not to emit from', ee, 'foo'),
           'not to throw'
@@ -186,8 +184,8 @@ describe('unexpected-eventemitter', function() {
       });
     });
 
-    describe('when EventEmitter emits an expected event', function() {
-      it('should throw', function() {
+    describe('when EventEmitter emits an expected event', function () {
+      it('should throw', function () {
         expect(
           () => expect(() => ee.emit('foo'), 'not to emit from', ee, 'foo'),
           'to throw',
