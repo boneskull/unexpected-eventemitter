@@ -30,16 +30,17 @@ module.exports = {
 
         ee.once(eventName, onEvent);
 
-        try {
-          expect(subject, 'not to throw');
-          expect(emitted, '[not] to be truthy');
-
-          values.forEach((value, idx) => {
-            expect(emittedValues[idx], '[not] to satisfy', value);
+        return expect
+          .promise(() => expect(subject, 'not to error'))
+          .then(() => {
+            expect(emitted, '[not] to be true');
+            values.forEach((value, idx) => {
+              expect(emittedValues[idx], '[not] to satisfy', value);
+            });
+          })
+          .finally(() => {
+            ee.removeListener(eventName, onEvent);
           });
-        } finally {
-          ee.removeListener(eventName, onEvent);
-        }
       }
     );
   },

@@ -26,21 +26,49 @@ describe('unexpected-eventemitter', function () {
 
   describe('to emit from', function () {
     describe('when EventEmitter does not emit an expected event', function () {
-      it('should throw', function () {
+      it('should error', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName),
-          'to throw',
+          'to error',
           new RegExp(`to emit from(?:[^]|.)EventEmitter(?:[^]|.)+${eventName}`)
         );
+      });
+
+      describe('and the subject is an async function', function () {
+        it('should error', function () {
+          return expect(
+            () =>
+              expect(() => Promise.resolve(), 'to emit from', ee, eventName),
+            'to error'
+          );
+        });
       });
     });
 
     describe('when EventEmitter emits an expected event', function () {
-      it('should not throw', function () {
-        expect(
+      it('should not error', function () {
+        return expect(
           () => expect(() => ee.emit(eventName), 'to emit from', ee, eventName),
-          'not to throw'
+          'not to error'
         );
+      });
+
+      describe('and the subject is an async function', function () {
+        it('should not error', function () {
+          return expect(
+            () =>
+              expect(
+                () =>
+                  Promise.resolve().then(() => {
+                    ee.emit(eventName);
+                  }),
+                'to emit from',
+                ee,
+                eventName
+              ),
+            'not to error'
+          );
+        });
       });
 
       describe('and that event is "error"', function () {
@@ -178,21 +206,54 @@ describe('unexpected-eventemitter', function () {
 
   describe('not to emit from', function () {
     describe('when EventEmitter does not emit an expected event', function () {
-      it('should not throw', function () {
+      it('should not error', function () {
         expect(
           () => expect(() => {}, 'not to emit from', ee, 'foo'),
-          'not to throw'
+          'not to error'
         );
+      });
+
+      describe('and the subject is an async function', function () {
+        it('should not error', function () {
+          return expect(
+            () =>
+              expect(
+                () => Promise.resolve(),
+                'not to emit from',
+                ee,
+                eventName
+              ),
+            'not to error'
+          );
+        });
       });
     });
 
     describe('when EventEmitter emits an expected event', function () {
-      it('should throw', function () {
+      it('should error', function () {
         expect(
           () => expect(() => ee.emit('foo'), 'not to emit from', ee, 'foo'),
-          'to throw',
+          'to error',
           /not to emit from(?:[^]|.)EventEmitter(?:[^]|.)+foo/
         );
+      });
+
+      describe('and the subject is an async function', function () {
+        it('should error', function () {
+          return expect(
+            () =>
+              expect(
+                () =>
+                  Promise.resolve().then(() => {
+                    ee.emit(eventName);
+                  }),
+                'not to emit from',
+                ee,
+                eventName
+              ),
+            'to error'
+          );
+        });
       });
     });
   });
