@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/boneskull/unexpected-eventemitter/compare/v2.0.0...v2.1.0) (2020-04-10)
+
+### Features
+
+- add Promise support ([1553dd6](https://github.com/boneskull/unexpected-eventemitter/commit/1553dd6d8f6d3da98d45206c8d5064688b90b949))
+
 ## [2.0.0](https://github.com/boneskull/unexpected-eventemitter/compare/v1.1.3...v2.0.0) (2020-03-24)
 
 ### ⚠ BREAKING CHANGES
