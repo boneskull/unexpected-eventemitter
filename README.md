@@ -74,6 +74,13 @@ expect(
 - An `EventEmitter` emitting _more_ values than expected _will not_ fail an assertion.
 - Values are checked with ["to satisfy"](http://unexpected.js.org/assertions/any/to-satisfy/) for flexibility.
 
+### `to emit with error from`
+
+`<function> to emit with error from <Error> <EventEmitter> <string> <any*>`
+
+- Use when the subject `<function>` emits, but _also_ throws or rejects.
+- There is no converse of this assertion; you cannot use `[not]`.
+
 ## Contributing
 
 Please use the [Angular commit message format](https://www.npmjs.com/package/conventional-changelog-angular#commit-message-format).

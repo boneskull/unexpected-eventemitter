@@ -29,9 +29,27 @@ describe('unexpected-eventemitter', function () {
       it('should error', function () {
         expect(
           () => expect(() => {}, 'to emit from', ee, eventName),
-          'to error',
+          'to error with',
           new RegExp(`to emit from(?:[^]|.)EventEmitter(?:[^]|.)+${eventName}`)
         );
+      });
+
+      describe('and the subject throws', function () {
+        it('should error with the thrown exception', function () {
+          expect(
+            () =>
+              expect(
+                () => {
+                  throw new Error('my exception');
+                },
+                'to emit from',
+                ee,
+                eventName
+              ),
+            'to error with',
+            /my exception/
+          );
+        });
       });
 
       describe('and the subject is an async function', function () {
@@ -39,8 +57,27 @@ describe('unexpected-eventemitter', function () {
           return expect(
             () =>
               expect(() => Promise.resolve(), 'to emit from', ee, eventName),
-            'to error'
+            'to error with',
+            new RegExp(
+              `to emit from(?:[^]|.)EventEmitter(?:[^]|.)+${eventName}`
+            )
           );
+        });
+
+        describe('and the subject rejects', function () {
+          it('should error with the rejected Promise', function () {
+            return expect(
+              () =>
+                expect(
+                  () => Promise.reject(new Error('my exception')),
+                  'to emit from',
+                  ee,
+                  eventName
+                ),
+              'to error with',
+              /my exception/
+            );
+          });
         });
       });
     });
@@ -69,6 +106,26 @@ describe('unexpected-eventemitter', function () {
             'not to error'
           );
         });
+
+        describe('and the subject rejects', function () {
+          it('should error with the rejected Promise', function () {
+            return expect(
+              () =>
+                expect(
+                  () =>
+                    Promise.resolve().then(() => {
+                      ee.emit(eventName);
+                      throw new Error('my exception');
+                    }),
+                  'to emit from',
+                  ee,
+                  eventName
+                ),
+              'to error with',
+              /my exception/
+            );
+          });
+        });
       });
 
       describe('and that event is "error"', function () {
@@ -76,18 +133,41 @@ describe('unexpected-eventemitter', function () {
           eventName = 'error';
         });
 
-        it('should not throw', function () {
+        it('should not error', function () {
           expect(
             () =>
               expect(() => ee.emit(eventName), 'to emit from', ee, eventName),
-            'not to throw'
+            'not to error'
+          );
+        });
+      });
+
+      describe('and the subject throws', function () {
+        beforeEach(function () {
+          eventName = 'foo';
+        });
+
+        it('should error with the thrown exception', function () {
+          expect(
+            () =>
+              expect(
+                () => {
+                  ee.emit(eventName);
+                  throw new Error('my exception');
+                },
+                'to emit from',
+                ee,
+                eventName
+              ),
+            'to error with',
+            /my exception/
           );
         });
       });
     });
   });
 
-  describe('to emit a value from', function () {
+  describe('to emit from (with values)', function () {
     let value;
 
     beforeEach(function () {
@@ -252,6 +332,86 @@ describe('unexpected-eventemitter', function () {
                 eventName
               ),
             'to error'
+          );
+        });
+      });
+    });
+  });
+
+  describe('to emit with error from', function () {
+    describe('when subject errors', function () {
+      describe('when EventEmitter does not emit an expected event', function () {
+        it('should error with "failed to emit" error', function () {
+          let error = new Error('my exception');
+          expect(
+            () =>
+              expect(
+                () => {
+                  throw error;
+                },
+                'to emit with error from',
+                error,
+                ee,
+                eventName
+              ),
+            'to error with',
+            new RegExp(
+              `to emit with error from(?:[^]|.)+?${error.message}(?:[^]|.)+?EventEmitter(?:[^]|.)+${eventName}`
+            )
+          );
+        });
+      });
+
+      describe('when EventEmitter emits an expected event', function () {
+        it('should not error', function () {
+          let error = new Error('my exception');
+          expect(
+            () =>
+              expect(
+                () => {
+                  ee.emit(eventName);
+                  throw error;
+                },
+                'to emit with error from',
+                error,
+                ee,
+                eventName
+              ),
+            'not to error'
+          );
+        });
+      });
+    });
+
+    describe('when subject does not error', function () {
+      describe('and the subject does not emit the event', function () {
+        it('should error because the subject did not error', function () {
+          let error = new Error('my exception');
+          expect(
+            () =>
+              expect(() => {}, 'to emit with error from', error, ee, eventName),
+            'to error with',
+            /my exception/
+          );
+        });
+      });
+
+      describe('and the subject emits the event', function () {
+        it('should error because the subject did not error', function () {
+          let error = new Error('my exception');
+          expect(
+            () =>
+              expect(
+                () => {
+                  ee.emit(eventName);
+                },
+                'to emit with error from',
+                error,
+                ee,
+                eventName
+              ),
+            'to error with',
+            /my exception/
           );
         });
       });
