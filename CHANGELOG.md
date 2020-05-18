@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/boneskull/unexpected-eventemitter/compare/v2.1.0...v2.2.0) (2020-05-18)
+
+### Features
+
+- add "to emit with error" assertion ([2faaa59](https://github.com/boneskull/unexpected-eventemitter/commit/2faaa599bb9638ad511146f968c4e9a354a993f0))
+
 ## [2.1.0](https://github.com/boneskull/unexpected-eventemitter/compare/v2.0.0...v2.1.0) (2020-04-10)
 
 ### Features
