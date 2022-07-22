@@ -47,7 +47,7 @@
     "package-json-versionify": "^1.0.4",
     "prettier": "^2.0.2",
     "sinon": "^9.0.1",
-    "standard-version": "^7.1.0",
+    "standard-version": "^9.5.0",
     "unexpected": "^11.13.0"
   },
   "engines": {
@@ -65,7 +65,6 @@
     "release": "standard-version -a",
     "prepublishOnly": "browserify -e src/unexpected-eventemitter.js -t [ bubleify --target [ --ie 11 ] ] -t package-json-versionify -s unexpectedEventEmitter -d -o dist/unexpected-eventemitter.js"
   },
-  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/boneskull/unexpected-eventemitter.git"
