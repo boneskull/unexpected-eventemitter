@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/boneskull/unexpected-eventemitter/compare/v2.2.0...v2.2.1) (2022-07-23)
+
+### Bug Fixes
+
+- **dependencies:** upgrade dependencies for npm audit ([cea2522](https://github.com/boneskull/unexpected-eventemitter/commit/cea2522c6b6e4a2570cff00023fcbd7bee615b6c))
+
 ## [2.2.0](https://github.com/boneskull/unexpected-eventemitter/compare/v2.1.0...v2.2.0) (2020-05-18)
 
 ### Features
