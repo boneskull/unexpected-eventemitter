@@ -49,6 +49,19 @@ expect(
   }
 ); // ok
 
+// "to emit from" with Promise
+expect(
+  somethingAsync().then(() => {
+    ee.emit('foo', {bar: 'baz'});
+  }),
+  'to emit from',
+  ee,
+  'foo',
+  {
+    bar: 'baz',
+  }
+); // ok
+
 // "not to emit from" with async function
 expect(
   async () => {
@@ -59,15 +72,27 @@ expect(
   ee,
   'foo'
 ); // assertion failure!
+
+// "to emit with error from"
+expect(
+  Promise.resolve().then(() => {
+    ee.emit('foo', {bar: 'baz'});
+    throw new Error('uh oh');
+  }),
+  'to emit with error from',
+  ee,
+  'foo',
+  /uh oh/
+); // ok
 ```
 
 ## Assertions
 
 ### `to emit from`
 
-`<function> [not] to emit from <EventEmitter> <string> <any*>`
+`<function|Promise> [not] to emit from <EventEmitter> <string> <any*>`
 
-- `<function>` may be a sync or `Promise`-returning function.
+- `<function|Promise>` may be a Promise, async, or synchronous function
 - `<EventEmitter>` may be a duck-typed Node.js [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)
 - `<string>` is the event name
 - `<any*>` corresponds to _zero (0) or more_ values which may be emitted. Do not use an array unless you expect the value to be an array!
@@ -76,14 +101,14 @@ expect(
 
 ### `to emit with error from`
 
-`<function> to emit with error from <Error> <EventEmitter> <string> <any*>`
+`<function|Promise> to emit with error from <Error> <EventEmitter> <string> <any*>`
 
-- Use when the subject `<function>` emits, but _also_ throws or rejects.
+- Use when the subject `<function|Promise>` emits, but _also_ throws or rejects.
 - There is no converse of this assertion; you cannot use `[not]`.
 
 ## Contributing
 
-Please use the [Angular commit message format](https://www.npmjs.com/package/conventional-changelog-angular#commit-message-format).
+Please use the [Conventional Commits](https://www.conventionalcommits.org) commit message format.
 
 ## Related Projects
 
