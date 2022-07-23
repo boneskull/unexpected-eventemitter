@@ -74,15 +74,16 @@ expect(
 ); // assertion failure!
 
 // "to emit with error from"
+const err = new Error('uh oh');
 expect(
   Promise.resolve().then(() => {
     ee.emit('foo', {bar: 'baz'});
-    throw new Error('uh oh');
+    throw err;
   }),
   'to emit with error from',
   ee,
   'foo',
-  /uh oh/
+  err
 ); // ok
 ```
 
@@ -104,6 +105,7 @@ expect(
 `<function|Promise> to emit with error from <Error> <EventEmitter> <string> <any*>`
 
 - Use when the subject `<function|Promise>` emits, but _also_ throws or rejects.
+- A strict equality check is made against `Error`
 - There is no converse of this assertion; you cannot use `[not]`.
 
 ## Contributing
