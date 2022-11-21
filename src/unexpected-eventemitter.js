@@ -1,10 +1,8 @@
 'use strict';
 
-const {version} = require('../package.json');
-
 module.exports = {
   name: 'unexpected-eventemitter',
-  version,
+  version: '[VI]{{inject}}[/VI]',
   installInto(expect) {
     expect.addType({
       base: 'object',
