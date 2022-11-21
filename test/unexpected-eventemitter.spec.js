@@ -3,7 +3,7 @@
 
 const unexpected = require('unexpected');
 const sinon = require('sinon');
-const unexpectedEventEmitter = require('..');
+const unexpectedEventEmitter = require('../src/unexpected-eventemitter');
 const {EventEmitter} = require('events');
 
 describe('unexpected-eventemitter', function () {
