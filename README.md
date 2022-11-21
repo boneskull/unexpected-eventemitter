@@ -8,17 +8,18 @@
 $ npm i unexpected unexpected-eventemitter --save-dev
 ```
 
-- This module requires Node.js v8+, IE11, or a modern browser.
-- [unexpected](http://unexpected.js.org) is a _peer dependency_ of this module.
-- In a browser, this module is exposed as `global.unexpectedEventEmitter`.
+- This package requires Node.js v14+ _or_ a browser supporting ES6.
+- [unexpected](http://unexpected.js.org) v10+ is a _peer dependency_ of this package.
+- In a browser, this module is exposed as `globalThis.unexpectedEventEmitter` or `window.unexpectedEventEmitter`.
 
 ## Example
 
 ```js
-const unexpected = require('unexpected');
-const {EventEmitter} = require('events');
+import unexpected from 'unexpected';
+import unexpectedEventEmitter from 'unexpected-eventemitter';
+import {EventEmitter} from 'node:events';
 
-const expect = unexpected.clone().use(require('unexpected-eventemitter'));
+const expect = unexpected.clone().use(unexpectedEventEmitter);
 
 const ee = new EventEmitter();
 
@@ -118,4 +119,4 @@ Please use the [Conventional Commits](https://www.conventionalcommits.org) commi
 
 ## License
 
-:copyright: 2017-2020 [Christopher Hiller](https://boneskull.com). Licensed Apache-2.0.
+:copyright: 2017 [Christopher Hiller](https://boneskull.com). Licensed Apache-2.0.
