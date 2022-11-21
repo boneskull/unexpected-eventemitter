@@ -47,11 +47,10 @@
     "package-json-versionify": "^1.0.4",
     "prettier": "^2.0.2",
     "sinon": "^9.0.1",
-    "standard-version": "^9.5.0",
     "unexpected": "^13.0.0"
   },
   "engines": {
-    "node": ">=8"
+    "node": "^14.17.0 || ^16.13.0 || >=18.0.0"
   },
   "peerDependencies": {
     "unexpected": "^10 || ^11 || ^12 || ^13"
@@ -62,7 +61,6 @@
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "mocha",
-    "release": "standard-version -a",
     "prepare": "npm run build"
   },
   "repository": {
