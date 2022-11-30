@@ -44,7 +44,7 @@
     "lint-staged": "10.0.10",
     "mocha": "10.1.0",
     "prettier": "2.0.2",
-    "sinon": "9.0.1",
+    "sinon": "9.0.3",
     "unexpected": "13.0.0"
   },
   "engines": {
