@@ -29,7 +29,7 @@
     "*.{json,yml,md}": "prettier --write"
   },
   "devDependencies": {
-    "esbuild": "0.16.1",
+    "esbuild": "0.16.2",
     "esbuild-plugin-version-injector": "1.0.2",
     "eslint": "5.16.0",
     "eslint-config-prettier": "3.6.0",
