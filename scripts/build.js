@@ -27,8 +27,7 @@ Promise.all([
   esbuild.build({
     entryPoints,
     footer: {
-      js:
-        '(typeof globalThis === "undefined" ? window : globalThis).unexpectedEventEmitter = unexpectedEventEmitter;',
+      js: '(typeof globalThis === "undefined" ? window : globalThis).unexpectedEventEmitter = unexpectedEventEmitter;',
     },
     format: 'iife',
     globalName: 'unexpectedEventEmitter',
