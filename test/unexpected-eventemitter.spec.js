@@ -582,7 +582,7 @@ describe('unexpected-eventemitter', function () {
       describe('when subject errors', function () {
         describe('when EventEmitter does not emit an expected event', function () {
           it('should error with "failed to emit" error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -604,7 +604,7 @@ describe('unexpected-eventemitter', function () {
 
         describe('when EventEmitter emits an expected event', function () {
           it('should not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -626,7 +626,7 @@ describe('unexpected-eventemitter', function () {
       describe('when subject does not error', function () {
         describe('and the subject does not emit the event', function () {
           it('should error because the subject did not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -644,7 +644,7 @@ describe('unexpected-eventemitter', function () {
 
         describe('and the subject emits the event', function () {
           it('should error because the subject did not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -668,7 +668,7 @@ describe('unexpected-eventemitter', function () {
       describe('when subject rejects', function () {
         describe('when EventEmitter does not emit an expected event', function () {
           it('should reject with "failed to emit" error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             return expect(
               () =>
                 expect(
@@ -690,7 +690,7 @@ describe('unexpected-eventemitter', function () {
 
         describe('when EventEmitter emits an expected event', function () {
           it('should not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -712,7 +712,7 @@ describe('unexpected-eventemitter', function () {
       describe('when subject does not error', function () {
         describe('and the subject does not emit the event', function () {
           it('should error because the subject did not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
@@ -730,7 +730,7 @@ describe('unexpected-eventemitter', function () {
 
         describe('and the subject emits the event', function () {
           it('should error because the subject did not error', function () {
-            let error = new Error('my exception');
+            const error = new Error('my exception');
             expect(
               () =>
                 expect(
