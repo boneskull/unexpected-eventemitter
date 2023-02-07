@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "esbuild": "0.16.17",
-    "esbuild-plugin-version-injector": "1.0.2",
+    "esbuild-plugin-version-injector": "1.0.3",
     "eslint": "5.16.0",
     "eslint-config-prettier": "3.6.0",
     "eslint-config-semistandard": "13.0.0",
